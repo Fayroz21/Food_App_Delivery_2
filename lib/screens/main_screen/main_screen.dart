@@ -5,12 +5,12 @@ import 'package:food_delivery_app/components/Custom_Text.dart';
 import 'package:food_delivery_app/components/Custom_appBar.dart';
 import 'package:food_delivery_app/components/Custom_backGround2.dart';
 import 'package:food_delivery_app/components/Custom_textField.dart';
+import 'package:food_delivery_app/screens/Login_screen/Login_screen.dart';
 import 'package:food_delivery_app/screens/main_screen/controller/main_controller.dart';
 import 'package:get/get.dart';
 
 import '../../Constants/consts.dart';
 import '../../constants/otherConsts/other_consts.dart';
-
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
@@ -33,6 +33,15 @@ class MainScreen extends StatelessWidget {
                     text: 'Find Your Favorite Food',
                     fontWeight: FontWeight.bold,
                     size: 31.sp,
+                  ),
+                ),
+                Flexible(
+                  child: IconButton(
+                    onPressed: () {
+                      Get.offAll(LoginScreen());
+                    },
+                    icon: const Icon(Icons.logout),
+                    color: Const.mainColor,
                   ),
                 ),
                 CustomAppBar(
