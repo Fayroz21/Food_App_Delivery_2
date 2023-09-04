@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'Custom_Text.dart';
+import 'dart:io';
+
 
 class CustomCard extends StatelessWidget {
 
@@ -30,14 +32,23 @@ class CustomCard extends StatelessWidget {
         contentPadding: EdgeInsets.only(
             top: 10.w, bottom: 10.w, right: 8.w, left: 20.w),
         leading: SizedBox(
-          child: Container(
-            width: 62.w,
-            height: 60.h,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10.w),
             child: Image.asset(
               '$userImage',
+              width: 62.w,
+              height: 60.h,
               errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                return Image.asset(
-                  'assets/user/avatar.jpg',
+                return Image.file(
+                  File('$userImage'),
+                  fit: BoxFit.fill,
+                  width: 62.w,
+                  height: 60.h,
+                  errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                    return Image.asset(
+                      'assets/user/avatar.jpg',
+                    );
+                  },
                 );
               },
               fit: BoxFit.fill,
