@@ -29,9 +29,12 @@ class UploadPhotoController extends GetxController{
   final isLoading = false.obs;
   Services services = Services();
 
+  final String assetsPath = 'C:\\Users\\chtar\\StudioProjects\\food_delivery_app\\assets';
+
+
 
   void getImage(ImageSource imageSource, context) async{
-    final pickedFile = await ImagePicker().getImage(source: imageSource);
+    final pickedFile = await ImagePicker().pickImage(source: imageSource);
     //if user picked an image
     if(pickedFile != null){
       selectedImagePath.value = pickedFile.path;
@@ -62,6 +65,8 @@ class UploadPhotoController extends GetxController{
         await chatUserRef.doc(uid).update({
           'image' : selectedImagePath.value,
         });
+
+
 
         Get.to(() => SetLocationScreen());
 
